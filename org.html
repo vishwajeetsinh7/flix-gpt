@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<form id="quizForm">
+  <h1>Test Quizz</h1>
+  <div>
+      <label>Who are you shopping for?</label>
+      <select id="gender" name="gender">
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+      </select>
+  </div> 
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const quizForm = document.querySelector('#quizForm')
+
+  const gender = document.querySelector('#gender')
+  quizForm.addEventListener('submit', (e) => { 
+    e.preventDefault()
+    console.log(gender?.value)
+
+  })
+</script>
+  
+</body>
+</html>
