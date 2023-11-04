@@ -4,7 +4,9 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {addUser, removeUser} from '../utils/userSlice'
-import { logo } from '../utils/constant';
+import { SUPPORTED_LANGUAGES, logo } from '../utils/constant';
+import { toggleGptSearchView } from '../utils/gptSlice';
+import {changeLaungage} from '../utils/configSlice'
 
 const Header = () => {
 
@@ -12,6 +14,8 @@ const Header = () => {
   const navigate = useNavigate()
 
   const user = useSelector(store => store.user) || null
+
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
 
   const handleSignOut = () => { 
     signOut(auth).then(() => {
@@ -21,6 +25,7 @@ const Header = () => {
       navigate('/error ')
     });
   }
+
 
   
   useEffect(() => { 
@@ -42,12 +47,29 @@ const Header = () => {
       return () => unsubscribe()
 }, [])
 
+const handleGptSearchClick = ()  => { 
+  // tooggle gpt search 
+  dispatch(toggleGptSearchView())
+}
+
+const handleLanguageChange = (e) => { 
+  dispatch(changeLaungage(e.target.value))
+}
+
 
   return (
         <header className=' absolute z-20 w-screen px-8 py-5 bg-gradient-to-b from-black flex justify-between'>
             <img className='w-40' src={logo} alt="logo" />
             {user && 
             <div className='flex items-center gap-1'>
+              {
+                showGptSearch && 
+                <select name="" id="" onChange={handleLanguageChange}>
+                {SUPPORTED_LANGUAGES.map(lang => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+              </select>
+              }
+          
+              <button className='px-2 py-3 m-2 rounded-md bg-purple-800 text-white' onClick={handleGptSearchClick}>{showGptSearch ? 'Home': 'GPT Search'}</button>
               <img className='w-8 h-8 aspect-square' src={user?.photoURL} alt='user imag'/>
               <button onClick={handleSignOut} className='font-bold text-white'>Sign out</button>
             </div>

@@ -8,10 +8,10 @@ const SecondaryContainer = () => {
     <section className='bg-black text-white'>
     <div className='max-w-7xl m-auto -mt-7 '>
 
-      <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
-      <MovieList title={"Popular"} movies={movies.popularMovies}/>
-      <MovieList title={"Upcoming"} movies={movies.nowPlayingMovies}/>
-      <MovieList title={"Horror"} movies={movies.nowPlayingMovies}/>
+      <MovieList key={1} title={"Now Playing"} movies={movies.nowPlayingMovies}/>
+      <MovieList key={2} title={"Popular"} movies={movies.popularMovies}/>
+      {/* <MovieList title={"Upcoming"} movies={movies.nowPlayingMovies}/> */}
+      {/* <MovieList title={"Horror"} movies={movies.nowPlayingMovies}/> */}
     </div>
     </section>
   )

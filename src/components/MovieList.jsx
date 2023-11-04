@@ -2,7 +2,6 @@ import React from 'react'
 import MovieCard from './MovieCard'
 
 const MovieList = ({title, movies}) => {
-    console.log({movies})
   return (
     <div className=''>
         <div>
@@ -10,7 +9,7 @@ const MovieList = ({title, movies}) => {
         </div>
         <main className='flex  flex-wrap gap-3 justify-between'>
             {movies && movies.map((movie) => ( 
-                <MovieCard posterPath={movie.poster_path}/>
+                <MovieCard key={movie?.id} posterPath={movie.poster_path}/>
             ))}
         </main>
     </div>
