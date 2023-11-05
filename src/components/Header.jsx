@@ -58,7 +58,7 @@ const handleLanguageChange = (e) => {
 
 
   return (
-        <header className=' absolute z-20 w-screen px-8 py-5 bg-gradient-to-b from-black flex justify-between'>
+        <header className=' absolute z-20 w-screen px-8 py-5 bg-gradient-to-b from-black flex justify-between bg-black sm:bg-blue-500 md:bg-green-500 flex-col md:flex-row md:justify-between justify-center'>
             <img className='w-40' src={logo} alt="logo" />
             {user && 
             <div className='flex items-center gap-1'>
